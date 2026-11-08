@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Diwali My Love ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#080808;color:#fff;
+ font-family:Georgia,serif;text-align:center;
+ overflow-x:hidden
+}
+.page{
+ display:none;min-height:100vh;padding:35px 18px;
+ align-items:center;justify-content:center;flex-direction:column;
+ position:relative;overflow:hidden
+}
+.page.active{display:flex}
+h1{color:#ffd778;font-size:clamp(28px,7vw,45px)}
+p{line-height:1.8;font-size:17px}
+button{
+ background:linear-gradient(135deg,#ffe7a0,#bd852b);
+ color:#160e00;border:0;padding:14px 28px;
+ border-radius:30px;font-size:17px;font-weight:bold;
+ cursor:pointer;margin:12px
+}
+button:active{transform:scale(.96)}
+.gold{color:#ffd778}
+.card{
+ width:min(94%,520px);padding:28px 20px;
+ border:1px solid #b98a36;border-radius:20px;
+ background:#15100d;box-shadow:0 0 30px #a66c2533
+}
+input{
+ padding:14px;border-radius:12px;border:1px solid #d5a64b;
+ background:#080808;color:white;font-size:18px;
+ text-align:center;width:85%;margin:15px
+}
+#fireworks{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+.couple{
+ height:230px;width:100%;position:relative;margin:20px auto;
+ background:radial-gradient(ellipse at 50% 90%,#55320d,#080808 70%);
+ overflow:hidden;border-radius:18px
+}
+.person{
+ position:absolute;bottom:0;width:65px;height:125px;
+ background:#080808;border-radius:35px 35px 8px 8px
+}
+.person:before{
+ content:"";position:absolute;top:-48px;left:12px;
+ width:42px;height:48px;background:#080808;border-radius:50%
+}
+.person.one{left:calc(50% - 75px)}
+.person.two{left:calc(50% + 15px);height:145px}
+.firework{
+ position:absolute;color:#ffcf68;font-size:30px;
+ animation:twinkle 1.2s infinite alternate
+}
+@keyframes twinkle{to{opacity:.25;transform:scale(1.5)}}
+.options{position:relative;min-height:100px;width:100%;display:flex;justify-content:center;align-items:center;gap:15px}
+.no{position:relative}
+.letter{
+ text-align:left;max-width:650px;line-height:1.9;
+ font-size:16px;white-space:pre-line
+}
+.envelope{
+ width:190px;height:125px;background:#b77b28;
+ position:relative;margin:35px auto;cursor:pointer;
+ border-radius:8px;box-shadow:0 0 25px #e6ad4a55
+}
+.envelope:before{
+ content:"";position:absolute;top:0;left:0;
+ border-left:95px solid transparent;
+ border-right:95px solid transparent;
+ border-top:75px solid #e8b75b
+}
+#letterContent{display:none}
+.small{color:#c6ad83;font-size:14px}
+</style>
+</head>
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<!-- PAGE 1 -->
+<section class="page active" id="page1">
+ <div class="card">
+  <div class="couple">
+   <span class="firework" style="left:15%;top:20%">✦</span>
+   <span class="firework" style="left:75%;top:15%">✧</span>
+   <span class="firework" style="left:48%;top:8%">✺</span>
+   <span class="person one"></span>
+   <span class="person two"></span>
+  </div>
+  <h1>Happy Diwali<br>My Love ❤️</h1>
+  <p class="gold">A little surprise for my special person 🪔</p>
+  <button onclick="go(2)">Let's Begin ❤️</button>
+ </div>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page" id="page2">
+ <div class="card">
+  <h1>One Small Question 💛</h1>
+  <p>En birthday eppo papa? 🥺</p>
+  <input id="password" placeholder="DD.MM.YYYY">
+  <br>
+  <button onclick="checkPassword()">Unlock Surprise 🔐</button>
+  <p id="error" style="color:#ff7777"></p>
+ </div>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page" id="page3">
+ <div class="card">
+  <h1>Surpriseee! 🎆</h1>
+  <p>Unakkaga oru chinna Diwali surprise papa ❤️</p>
+  <p class="gold">May your life always shine like these fireworks!</p>
+  <button onclick="go(4)">Next ❤️</button>
+ </div>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page" id="page4">
+ <div class="card">
+  <p class="gold">QUIZ 01</p>
+  <h1>Enna unakku pudikkumaa papa? ❤️</h1>
+  <div class="options">
+   <button onclick="go(5)">YES ❤️</button>
+   <button class="no" onclick="moveNo(this)">NO 🙈</button>
+  </div>
+ </div>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page" id="page5">
+ <div class="card">
+  <p class="gold">QUIZ 02</p>
+  <h1>En mela irukka kovam poiduchaa thangoo? 🥺</h1>
+  <div class="options">
+   <button onclick="go(6)">YES ❤️</button>
+   <button class="no" onclick="moveNo(this)">NO 🙈</button>
+  </div>
+ </div>
+</section>
+
+<!-- PAGE 6 -->
+<section class="page" id="page6">
+ <div class="card">
+  <p class="gold">QUIZ 03</p>
+  <h1>Unna naan evlo special-ah nenachirukken nu theriyuma papa? ❤️</h1>
+  <div class="options">
+   <button onclick="go(7)">YES ❤️</button>
+   <button class="no" onclick="moveNo(this)">NO 🙈</button>
+  </div>
+ </div>
+</section>
+
+<!-- PAGE 7 -->
+<section class="page" id="page7">
+ <div class="card">
+  <h1>One Last Surprise 💌</h1>
+  <p class="gold">For My Thangoo ❤️</p>
+  <p>Unakkaga naan ezhuthiya oru chinna letter...</p>
+  <div class="envelope" onclick="openLetter()"></div>
+  <button onclick="openLetter()">Open My Letter 💌</button>
+
+  <div id="letterContent" class="letter">
+Hey Sowmi ❤️🥺
+
+Namma rendu perukkum sandai vandhadhunaala un manasu kashtapattirundha, manasara sorry thangoo.
+
+Sila neram kovathula naan pesuna vaarthaigal unna hurt pannirukkalaam. Aana unna hurt pannanum nu naan eppovume nenachadhilla papa.
+
+Naan onnum perfect person illa thangoo. En kittayum niraiya mistakes irukku. Aana en mistakes-ah purinjukittu ennai better person-ah maathikka kandippa try pannuven.
+
+Un feelings-ku importance kudukkanum, nee enna solla varanu porumaiya kekkanum, unna nalla purinjukkanum. Idhellam naan innum nalla panna try pannuven.
+
+Unna hurt pannirundha adhukku ennaala mudinja alavukku sorry sollikkiren papa. En sorry just words-ah mattum irukka koodathu. En actions-la adha prove pannanum nu aasapaduren.
+
+Indha Diwali-la unakku oru chinna surprise kudukkanum nu romba aasapaten. Adhan indha website. Idhu just oru website illa papa, unakku naan solla ninaikkira en manasula irukkura sila vaarthaigal.
+
+Namma rendu perukkum misunderstandings vandhaalum, adha pesi purinjukittu solve pannikkalaam. Un feelings-um un happiness-um enakku romba mukkiyam.
+
+Unakku kovam irundha adhayum naan purinjukka try pannuven. Unakku konjam time venumna adhayum respect pannuven.
+
+Once again, I'm really sorry papa. 🥺❤️
+
+Un face-la eppovum smile irukkanum. Nee eppovum happy-ah irukkanum nu manasara aasapaduren.
+
+Indha Diwali unakku niraiya happiness-um, beautiful moments-um kondu varanum.
+
+Happy Diwali My Thangoo! 🪔❤️
+
+Endrum anbudan,
+Un Sundar ❤️
+  </div>
+ </div>
+</section>
+
+<script>
+function go(n){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById("page"+n).classList.add("active");
+ window.scrollTo(0,0);
+}
+function checkPassword(){
+ const value=document.getElementById("password").value.trim();
+ if(value==="14.4.2006"){
+  document.getElementById("error").textContent="";
+  go(3);
+  startFireworks();
+ }else{
+  document.getElementById("error").textContent="Wrong answer papa 🙈 Try again!";
+ }
+}
+function moveNo(btn){
+ const area=btn.parentElement;
+ const maxX=Math.max(0,area.clientWidth-btn.offsetWidth);
+ const maxY=35;
+ btn.style.position="absolute";
+ btn.style.left=Math.random()*maxX+"px";
+ btn.style.top=(Math.random()*maxY)+"px";
+}
+function openLetter(){
+ document.getElementById("letterContent").style.display="block";
+ document.querySelector(".envelope").style.display="none";
+ document.getElementById("letterContent").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+/* Fireworks animation */
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+let particles=[];
+function resize(){
+ canvas.width=window.innerWidth;
+ canvas.height=window.innerHeight;
+}
+window.addEventListener("resize",resize);
+resize();
+
+function burst(){
+ const x=Math.random()*canvas.width;
+ const y=Math.random()*canvas.height*.55;
+ for(let i=0;i<45;i++){
+  const a=Math.PI*2*i/45;
+  const speed=1+Math.random()*3;
+  particles.push({
+   x,y,
+   vx:Math.cos(a)*speed,
+   vy:Math.sin(a)*speed,
+   life:65+Math.random()*25
+  });
+ }
+}
+let fireworksStarted=false;
+function startFireworks(){
+ if(fireworksStarted)return;
+ fireworksStarted=true;
+ setInterval(burst,650);
+ animate();
+}
+function animate(){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ particles=particles.filter(p=>p.life>0);
+ particles.forEach(p=>{
+  p.x+=p.vx;
+  p.y+=p.vy;
+  p.vy+=.025;
+  p.life--;
+  ctx.beginPath();
+  ctx.arc(p.x,p.y,2,0,Math.PI*2);
+  ctx.fillStyle="rgba(255,205,100,"+(p.life/90)+")";
+  ctx.fill();
+ });
+ requestAnimationFrame(animate);
+}
+</script>
+</body>
+</html>
